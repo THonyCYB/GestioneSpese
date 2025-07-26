@@ -83,14 +83,14 @@ class ApiService {
 
   // Auth endpoints
   async signup(email, password) {
-    return this.request("/auth/signup", {
+    return this.request("/auth-signup", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     })
   }
 
   async login(email, password) {
-    return this.request("/auth/login", {
+    return this.request("/auth-login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     })

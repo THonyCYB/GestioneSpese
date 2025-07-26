@@ -13,9 +13,13 @@ const app = express()
 const PORT = process.env.PORT || 3001
 
 // Middleware
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? [process.env.FRONTEND_URL, "https://gestionespese.vercel.app", "https://gestionespese.netlify.app"]
+  : ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001"];
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001"],
+    origin: allowedOrigins,
     credentials: true,
   }),
 )
