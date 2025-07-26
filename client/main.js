@@ -1,5 +1,7 @@
 // API Configuration
-const API_BASE_URL = "/api"
+const API_BASE_URL = window.location.hostname === 'localhost'
+  ? "/api"  // Sviluppo locale con proxy
+  : "https://gestionespese-backend.onrender.com/api"  // Produzione
 
 // Controllo connessione all'avvio
 async function checkConnection() {
@@ -83,14 +85,14 @@ class ApiService {
 
   // Auth endpoints
   async signup(email, password) {
-    return this.request("/auth-signup", {
+    return this.request("/auth/signup", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     })
   }
 
   async login(email, password) {
-    return this.request("/auth-login", {
+    return this.request("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     })
