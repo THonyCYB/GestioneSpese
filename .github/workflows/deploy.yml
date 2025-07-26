@@ -1,8 +1,8 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy Frontend to GitHub Pages (DISABLED)
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ disabled ]
 
 permissions:
   contents: read
