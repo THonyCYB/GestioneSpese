@@ -1,10 +1,14 @@
 [build]
   base = "client"
   publish = "client/dist"
-  command = "npm run build"
+  command = "cd client && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
+
+[dev]
+  command = "cd client && npm run dev"
+  port = 8888
 
 [[redirects]]
   from = "/api/*"
