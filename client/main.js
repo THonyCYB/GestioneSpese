@@ -1,7 +1,7 @@
 // API Configuration
 const API_BASE_URL = window.location.hostname === 'localhost'
   ? "/api"  // Sviluppo locale con proxy
-  : "https://gestionespese-backend.onrender.com/api"  // Produzione
+  : "https://gestionespese.onrender.com/api"  // Produzione
 
 // Controllo connessione all'avvio
 async function checkConnection() {
