@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker - Gestione Spese Personali</title>
+  <script type="module" crossorigin src="/GestioneSpese/assets/index-ai3qNkbx.js"></script>
+  <link rel="stylesheet" crossorigin href="/GestioneSpese/assets/index-CDoAKL5O.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Welcome Page -->
+        <div id="welcome-page" class="page active">
+            <div class="container">
+                <div class="welcome-card">
+                    <h1 class="app-title">💰 Expense Tracker</h1>
+                    <p class="app-subtitle">Gestisci le tue spese personali in modo semplice e professionale</p>
+                    <div class="welcome-buttons">
+                        <button id="login-btn" class="btn btn-primary">Accedi</button>
+                        <button id="signup-btn" class="btn btn-secondary">Registrati</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Accedi al tuo account</h2>
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Accedi</button>
+                    </form>
+                    <p class="auth-switch">
+                        Non hai un account? 
+                        <a href="#" id="switch-to-signup">Registrati qui</a>
+                    </p>
+                    <button id="back-to-welcome-from-login" class="btn btn-text">← Torna indietro</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Page -->
+        <div id="signup-page" class="page">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Crea un nuovo account</h2>
+                    <form id="signup-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required minlength="6">
+                            <small>Minimo 6 caratteri</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Registrati</button>
+                    </form>
+                    <p class="auth-switch">
+                        Hai già un account? 
+                        <a href="#" id="switch-to-login">Accedi qui</a>
+                    </p>
+                    <button id="back-to-welcome-from-signup" class="btn btn-text">← Torna indietro</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <header class="dashboard-header">
+                <div class="container">
+                    <div class="header-content">
+                        <h1>💰 Expense Tracker</h1>
+                        <div class="header-actions">
+                            <span id="user-email" class="user-info"></span>
+                            <button id="logout-btn" class="btn btn-text">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-main">
+                <div class="container">
+                    <!-- Summary Cards -->
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h3>Totale Spese</h3>
+                            <div id="total-amount" class="amount">€0.00</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Numero Spese</h3>
+                            <div id="total-count" class="count">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Add Expense Form -->
+                    <div class="expense-form-card">
+                        <h3>Aggiungi Nuova Spesa</h3>
+                        <form id="expense-form" class="expense-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expense-title">Titolo</label>
+                                    <input type="text" id="expense-title" required maxlength="100">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expense-amount">Importo (€)</label>
+                                    <input type="number" id="expense-amount" step="0.01" min="0.01" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expense-category">Categoria</label>
+                                    <select id="expense-category" required>
+                                        <option value="">Seleziona categoria</option>
+                                        <option value="Alimentari">Alimentari</option>
+                                        <option value="Trasporti">Trasporti</option>
+                                        <option value="Intrattenimento">Intrattenimento</option>
+                                        <option value="Salute">Salute</option>
+                                        <option value="Casa">Casa</option>
+                                        <option value="Lavoro">Lavoro</option>
+                                        <option value="Altro">Altro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expense-date">Data</label>
+                                    <input type="date" id="expense-date" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Aggiungi Spesa</button>
+                        </form>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="filters-card">
+                        <h3>Filtri</h3>
+                        <div class="filters">
+                            <select id="filter-category">
+                                <option value="all">Tutte le categorie</option>
+                                <option value="Alimentari">Alimentari</option>
+                                <option value="Trasporti">Trasporti</option>
+                                <option value="Intrattenimento">Intrattenimento</option>
+                                <option value="Salute">Salute</option>
+                                <option value="Casa">Casa</option>
+                                <option value="Lavoro">Lavoro</option>
+                                <option value="Altro">Altro</option>
+                            </select>
+                            <input type="date" id="filter-start-date" placeholder="Data inizio">
+                            <input type="date" id="filter-end-date" placeholder="Data fine">
+                            <button id="apply-filters" class="btn btn-secondary">Applica Filtri</button>
+                            <button id="clear-filters" class="btn btn-text">Pulisci</button>
+                        </div>
+                    </div>
+
+                    <!-- Expenses List -->
+                    <div class="expenses-card">
+                        <h3>Le Tue Spese</h3>
+                        <div id="expenses-list" class="expenses-list">
+                            <!-- Expenses will be loaded here -->
+                        </div>
+                        <div id="loading" class="loading hidden">Caricamento...</div>
+                        <div id="no-expenses" class="no-expenses hidden">
+                            <p>Nessuna spesa trovata. Aggiungi la tua prima spesa!</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Modifica Spesa</h3>
+                <button id="close-modal" class="btn btn-text">×</button>
+            </div>
+            <form id="edit-expense-form" class="expense-form">
+                <input type="hidden" id="edit-expense-id">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-expense-title">Titolo</label>
+                        <input type="text" id="edit-expense-title" required maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-expense-amount">Importo (€)</label>
+                        <input type="number" id="edit-expense-amount" step="0.01" min="0.01" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-expense-category">Categoria</label>
+                        <select id="edit-expense-category" required>
+                            <option value="Alimentari">Alimentari</option>
+                            <option value="Trasporti">Trasporti</option>
+                            <option value="Intrattenimento">Intrattenimento</option>
+                            <option value="Salute">Salute</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Lavoro">Lavoro</option>
+                            <option value="Altro">Altro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-expense-date">Data</label>
+                        <input type="date" id="edit-expense-date" required>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancel-edit" class="btn btn-secondary">Annulla</button>
+                    <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
